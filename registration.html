@@ -11,6 +11,7 @@
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 
     <!-- Firebase Configuration -->
     <script src="firebase_config.js"></script>
@@ -67,43 +68,6 @@
     </div>
 
     <!-- JavaScript -->
-    <script src="auth.js"></script>
-    <script>
-        // Handle form submission
-        document.getElementById('registrationForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const role = document.getElementById('userRole').value;
-
-            // Validate password match
-            if (password !== confirmPassword) {
-                alert("Passwords do not match!");
-                return;
-            }
-
-            // Register user with Firebase Auth
-            auth.createUserWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    // Add additional user data if needed (like name and role) to Firestore or Realtime Database
-                    const user = userCredential.user;
-                    console.log("User registered:", user);
-
-                    // Optionally, display a success message or redirect
-                    alert("Registration successful!");
-                    // Clear form fields
-                    document.getElementById('registrationForm').reset();
-                })
-                .catch((error) => {
-                    // Handle error
-                    console.error("Registration failed:", error.message);
-                    alert("Registration failed: " + error.message);
-                });
-        });
-    </script>
+    <script src="Javascript/auth.js"></script>
 </body>
 </html>
