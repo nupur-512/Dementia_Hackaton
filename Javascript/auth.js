@@ -1,32 +1,51 @@
-// Initialize Firebase App (Ensure this matches your firebaseConfig setup)
-// Get references to Firebase services
-const auth = firebase.auth();
-const db = firebase.firestore(); // Add this line to use Firestore
-
-// Function to show messages (replace with your implementation)
-function showMsg(message) {
-    alert(message);
+// Initialize Firebase app (if not already done in firebase_config.js)
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
 }
 
-// Handle form submission for user registration
+// Get auth and firestore instances
+const auth = firebase.auth();
+const db = firebase.firestore();
+
 document.getElementById('registrationForm').addEventListener('submit', function(event) {
     event.preventDefault();
     
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
     const firstName = document.getElementById('firstName').value;
     const lastName = document.getElementById('lastName').value;
     const role = document.getElementById('userRole').value;
-    
+
+    // Validate password match
+    if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+    }
+
     // Register user with Firebase Auth
     auth.createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
-            // User registered successfully
+            // User registered successfully, now add to Firestore
             const user = userCredential.user;
-            console.log("User registered:", user);
             
-            // Add user data to Firestore
-            return db.collection('users').doc(user.uid).set({
+            // Determine the collection based on the role
+            let collectionName;
+            switch (role.toLowerCase()) {
+                case 'patient':
+                    collectionName = 'patients';
+                    break;
+                case 'doctor':
+                    collectionName = 'doctors';
+                    break;
+                case 'admin':
+                    collectionName = 'admins';
+                    break;
+                default:
+                    throw new Error('Invalid role');
+            }
+
+            return db.collection(collectionName).doc(user.uid).set({
                 firstName: firstName,
                 lastName: lastName,
                 email: email,
@@ -34,27 +53,27 @@ document.getElementById('registrationForm').addEventListener('submit', function(
             });
         })
         .then(() => {
-            showMsg("Registration successful!");
-            document.getElementById('registrationForm').reset(); // Reset form fields
+            console.log("User registered and data saved to Firestore");
+            alert("Registration successful!");
+            document.getElementById('registrationForm').reset();
             
             // Redirect based on role
-            switch(role) {
-                case 'admin':
-                    window.location.href = 'Admin.html';
+            switch (role.toLowerCase()) {
+                case 'patient':
+                    window.location.href = 'user_profile_patient.html';
                     break;
                 case 'doctor':
-                    window.location.href = 'doctors.html';
+                    window.location.href = 'user_profile_doctor.html';
                     break;
-                case 'patient':
-                    window.location.href = 'Patient.html';
+                case 'admin':
+                    window.location.href = 'user_profile_admin.html';
                     break;
                 default:
-                    console.error("Unknown role");
+                    throw new Error('Invalid role');
             }
         })
         .catch((error) => {
-            // Handle errors
             console.error("Registration failed:", error.message);
-            showMsg("Registration failed: " + error.message);
+            alert("Registration failed: " + error.message);
         });
 });
