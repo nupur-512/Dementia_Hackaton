@@ -55,6 +55,7 @@ document.getElementById('patientProfileForm').addEventListener('submit', functio
         .then(() => {
             console.log("Patient profile updated successfully");
             alert("Profile updated successfully!");
+            window.location.href = 'Patient.html';
         })
         .catch((error) => {
             console.error("Error updating profile:", error.message);

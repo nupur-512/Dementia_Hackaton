@@ -73,6 +73,7 @@ document.getElementById('doctorProfileForm').addEventListener('submit', function
                     .then(() => {
                         console.log("Doctor profile updated successfully");
                         alert("Profile updated successfully!");
+                        window.location.href = 'Doctor.html';
                     })
                     .catch((error) => {
                         console.error("Error updating profile:", error.message);
