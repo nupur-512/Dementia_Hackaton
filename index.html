@@ -1,6 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        #chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        #chatbot-button {
+            background-color: #cf2e2e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 15px;
+            cursor: pointer;
+            border-radius: 2px;
+            text-decoration: none;
+            text-align: center;
+        }
+        #chatbot-button:hover {
+            background-color: #8b1717;
+        }
+        #chatbot-iframe {
+            display: none;
+            width: 300px;
+            height: 400px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const chatbotButton = document.getElementById('chatbot-button');
+            const chatbotIframe = document.getElementById('chatbot-iframe');
+
+            chatbotButton.addEventListener('click', function () {
+                if (chatbotIframe.style.display === 'none' || chatbotIframe.style.display === '') {
+                    chatbotIframe.style.display = 'block';
+                } else {
+                    chatbotIframe.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dementia UK</title>
@@ -140,9 +184,13 @@
             <img src="assets/img/dementia.jpg" alt="Supporting Image">
             <div>
                 <p>Dementia UK is a charity that provides specialist dementia support for families through their Admiral Nurse service. Admiral Nurses provide vital support to families facing dementia, helping them live more positively with dementia in the present, and to face the challenges of tomorrow with more confidence and less fear.</p>
-                <p>To contact the Dementia UK helpline for support and advice, call 0800 888 6678.</p>
+                <p>To contact the Dementia UK helpline for support and advice, call 0800 888 6678.
             </div>
         </section>
+    </div>
+    <div id="chatbot-container">
+        <button id="chatbot-button">Chat with Us</button>
+        <iframe id="chatbot-iframe" height="430" width="350" src="https://console.dialogflow.com/api-client/demo/embedded/e395a46f-7800-4354-8480-db69bd8fc2d3" title="Chatbot"></iframe>
     </div>
 </div>
 <div class="footer">
