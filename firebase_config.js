@@ -8,3 +8,8 @@ const firebaseConfig = {
   measurementId: "G-839QKX5DKM"
 };
 firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+// Make Firebase objects available globally
+window.firebase = { auth, db };

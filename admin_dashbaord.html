@@ -4,9 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+    <!-- Include Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js"></script>
+    <!-- Link to external JavaScript file -->
+    <script src="fetch_patient_data.js"></script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
     <h1>Hello, Admin!</h1>
     <p>Welcome to your admin dashboard.</p>
+    
+    <!-- Table to display patient data -->
+    <table id="patientsTable">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Health Identifier</th>
+                <th>Email</th>
+                <th>Address Line 1</th>
+                <th>Address Line 2</th>
+                <th>City</th>
+                <th>Postal Code</th>
+                <th>Age</th>
+                <th>Dementia Type</th>
+                <th>Sexual Orientation</th>
+                <th>Identification Document</th>
+            </tr>
+        </thead>
+        <tbody id="patientsTableBody">
+            <!-- Patient data will be inserted here -->
+        </tbody>
+    </table>
 </body>
 </html>
