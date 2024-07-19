@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script defer src="firebase_config.js"></script>
+    <script defer src="patient_dashbaord.js"></script>
+</head>
+<body>
+    <h1>Patient Dashboard</h1>
+
+    <!-- Prescription Upload Section -->
+    <section id="upload-prescription">
+        <h2>Upload Prescription</h2>
+        <form id="prescription-form">
+            <input type="file" id="prescription-file" accept=".pdf,.jpg,.png" required>
+            <button type="submit">Upload Prescription</button>
+        </form>
+        <p id="upload-status"></p>
+    </section>
+
+    <!-- Appointment Booking Section -->
+    <section id="book-appointment">
+        <h2>Book Appointment</h2>
+        <form id="appointment-form">
+            <label for="appointment-date">Date:</label>
+            <input type="date" id="appointment-date" required>
+            <label for="appointment-time">Time:</label>
+            <input type="time" id="appointment-time" required>
+            <button type="submit">Book Appointment</button>
+        </form>
+        <p id="appointment-status"></p>
+    </section>
+</body>
+</html>
