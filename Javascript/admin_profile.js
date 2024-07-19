@@ -70,7 +70,7 @@ document.getElementById('adminProfileForm').addEventListener('submit', function(
                     .then(() => {
                         console.log("Admin profile updated successfully");
                         alert("Profile updated successfully!");
-                        window.location.href = 'Admin.html';
+                        window.location.href = 'admin_dashbaord.html';
                     })
                     .catch((error) => {
                         console.error("Error updating profile:", error.message);
