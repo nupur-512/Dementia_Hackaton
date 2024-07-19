@@ -1,12 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Patient Dashboard</title>
-</head>
-<body>
-    <h1>Hello, Patient!</h1>
-    <p>Welcome to your patient dashboard.</p>
-</body>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f4f8;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        width: 80%;
+        margin: auto;
+        overflow: hidden;
+      }
+
+      header {
+        background: #35424a;
+        color: #ffffff;
+        padding-top: 30px;
+        min-height: 70px;
+        border-bottom: #e8491d 3px solid;
+      }
+
+      header a,
+      header ul {
+        color: #ffffff;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 16px;
+      }
+
+      header ul {
+        padding: 0;
+        list-style: none;
+      }
+
+      header li {
+        display: inline;
+        padding: 0 20px 0 20px;
+      }
+
+      header nav {
+        float: right;
+        margin-top: 10px;
+      }
+
+      #showcase {
+        min-height: 400px;
+        background: url("https://www.imghippo.com/i/5Go5m1721310982.jpg")
+          no-repeat center center/cover;
+        text-align: center;
+        color: #ffffff;
+      }
+
+      #showcase h1 {
+        margin-top: 100px;
+        font-size: 55px;
+        margin-bottom: 10px;
+      }
+
+      #showcase p {
+        font-size: 20px;
+      }
+
+      #main {
+        margin: 20px 0;
+      }
+
+      .card {
+        background: #ffffff;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .card h3 {
+        margin-top: 0;
+      }
+
+      footer {
+        background: #35424a;
+        color: #ffffff;
+        text-align: center;
+        padding: 10px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <div id="branding">
+          <h1><span class="highlight">Patient</span> Dashboard</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Appointments</a></li>
+            <li><a href="#">Messages</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <section
+      id="showcase"
+      style="
+        min-height: 400px;
+        background: url('https://www.imghippo.com/i/5Go5m1721310982.jpg')
+          no-repeat center center/cover;
+        text-align: center;
+        color: #ffffff;
+      "
+    >
+      <div class="container">
+        <h1>Welcome Back, [Patient Name]</h1>
+        <p>
+          Your health is our priority. Manage your appointments, messages, and
+          health records easily.
+        </p>
+      </div>
+    </section>
+
+    <div class="container" id="main">
+      <div class="card">
+        <h3>Upload Prescription</h3>
+        <input
+          type="file"
+          id="prescriptionUpload"
+          accept=".pdf,.jpg,.jpeg,.png"
+        />
+        <p>Upload a scanned copy of your prescription for reference.</p>
+      </div>
+      <div class="card">
+        <h3>Book Appointment</h3>
+        <button id="bookAppointmentBtn">Click to Book</button>
+        <p>This will open a calendar to schedule your appointment.</p>
+      </div>
+      <div class="card">
+        <h3>Your Health Stats</h3>
+        <p></p>
+      </div>
+    </div>
+  </body>
 </html>
